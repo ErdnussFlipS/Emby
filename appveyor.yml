@@ -51,7 +51,7 @@ install:
   - cmd: nuget restore
   - ps: >-
     cd .\Tools\Windows_Build_Script\
-    .\prepare_PortablLibraryTools2.ps1
+    .\prepare_PortableLibraryTools2.ps1
 #  - cmd: cmake --version
 #  - cmd: msbuild /version
 
