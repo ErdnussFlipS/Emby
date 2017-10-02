@@ -27,6 +27,8 @@ skip_tags: true
 #skip_commits:
 #  message: /appveyor:(.*)/
 
+clone_depth: 1
+
 #---------------------------------#
 #    environment configuration    #
 #---------------------------------#
