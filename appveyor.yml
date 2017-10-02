@@ -41,7 +41,7 @@ image: Visual Studio 2015
 init:
 
 # clone directory
-clone_folder: $(REPO_PATH)
+clone_folder: C:\projects\emby\emby
 
 # build cache to preserve files/folders between builds
 cache:
