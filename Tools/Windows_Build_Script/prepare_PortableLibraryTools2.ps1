@@ -1,4 +1,4 @@
-$PortableLibraryTools2Path = ".\PortableLibraryTools.exe"
+$PortableLibraryTools2Path = "${pwd}\PortableLibraryTools.exe"
 (New-Object Net.WebClient).DownloadFile('https://visualstudiogallery.msdn.microsoft.com/b0e0b5e9-e138-410b-ad10-00cb3caf4981/file/44714/7/PortableLibraryTools.exe', $PortableLibraryTools2Path)
 dir
 . .\PortableLibraryTools.exe /buildmachine

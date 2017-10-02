@@ -101,9 +101,9 @@ build_script:
 #      artifacts configuration    #
 #---------------------------------#
 
-# artifacts:
-#   - path: $(PROJECT_NAME)\bin\$(CONFIGURATION)\
-#     name: $(ARTIFACT_NAME)-$(CONFIGURATION)
+artifacts:
+  - path: .\Tools\Windows_Build_Script\MediaBrowser.sln.msbuild.log
+    name: MediaBrowser.sln.msbuild.log
 
 #---------------------------------#
 #     deployment configuration    #
