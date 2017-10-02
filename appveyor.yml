@@ -18,7 +18,6 @@ branches:
 
 # environment variables
 environment:
-  REPO_PATH: $(APPVEYOR_BUILD_FOLDER)
   ARTIFACT_NAME: MediaBrowser-Build-$(APPVEYOR_BUILD_VERSION)
 
 # Do not build on tags (GitHub only)
@@ -52,7 +51,7 @@ cache:
 install:
   - cmd: nuget restore .\MediaBrowser.sln
   - ps: >-
-      cd ${Env:REPO_PATH}
+      cd ${Env:APPVEYOR_BUILD_FOLDER}
 
       cd .\Tools\Windows_Build_Script\
 
@@ -90,11 +89,13 @@ after_build:
 # to run your custom scripts instead of automatic MSBuild
 build_script:
   - ps: >-
-      cd ${Env:REPO_PATH}
+      cd ${Env:APPVEYOR_BUILD_FOLDER}
       
       cd .\Tools\Windows_Build_Script\
 
       . .\server.build.ps1
+
+      dir ${Env:APPVEYOR_BUILD_FOLDER}\..\Deploy
 
 # to disable automatic builds
 #build: off
@@ -104,7 +105,7 @@ build_script:
 #---------------------------------#
 
 artifacts:
-  - path: $(REPO_PATH)\Tools\Windows_Build_Script\MediaBrowser.sln.msbuild.log
+  - path: $(APPVEYOR_BUILD_FOLDER)\Tools\Windows_Build_Script\MediaBrowser.sln.msbuild.log
     name: MediaBrowser.sln.msbuild.log
 
 #---------------------------------#
