@@ -48,7 +48,7 @@ cache:
 # scripts that run after cloning repository
 # use - ps for powershell, - cmd for commandline
 install:
-  - cmd: nuget restore
+  - cmd: nuget restore .\MediaBrowser.sln
   - ps: >-
       cd .\Tools\Windows_Build_Script\
       . .\prepare_PortableLibraryTools2.ps1
