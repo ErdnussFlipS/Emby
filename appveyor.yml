@@ -18,6 +18,7 @@ branches:
 
 # environment variables
 environment:
+  REPO_PATH: $(APPVEYOR_BUILD_FOLDER)\emby
   ARTIFACT_NAME: MediaBrowser-Build-$(APPVEYOR_BUILD_VERSION)
 
 # Do not build on tags (GitHub only)
@@ -40,7 +41,7 @@ image: Visual Studio 2015
 init:
 
 # clone directory
-#clone_folder: c:\projects\myproject
+clone_folder: $(REPO_PATH)
 
 # build cache to preserve files/folders between builds
 cache:
@@ -49,9 +50,9 @@ cache:
 # scripts that run after cloning repository
 # use - ps for powershell, - cmd for commandline
 install:
-  - cmd: nuget restore .\MediaBrowser.sln
+  - cmd: nuget restore .\emby\MediaBrowser.sln
   - ps: >-
-      cd ${Env:APPVEYOR_BUILD_FOLDER}
+      cd ${Env:REPO_PATH}
 
       cd .\Tools\Windows_Build_Script\
 
@@ -89,7 +90,7 @@ after_build:
 # to run your custom scripts instead of automatic MSBuild
 build_script:
   - ps: >-
-      cd ${Env:APPVEYOR_BUILD_FOLDER}
+      cd ${Env:REPO_PATH}
       
       cd .\Tools\Windows_Build_Script\
 
@@ -103,7 +104,7 @@ build_script:
 #---------------------------------#
 
 artifacts:
-  - path: .\Tools\Windows_Build_Script\MediaBrowser.sln.msbuild.log
+  - path: $(REPO_PATH)\Tools\Windows_Build_Script\MediaBrowser.sln.msbuild.log
     name: MediaBrowser.sln.msbuild.log
 
 #---------------------------------#
