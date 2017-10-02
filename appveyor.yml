@@ -33,7 +33,8 @@ clone_depth: 1
 #    environment configuration    #
 #---------------------------------#
 
-image: Visual Studio 2013
+# image: Visual Studio 2013
+image: Visual Studio 2015
 
 # scripts that are called at very beginning, before repo cloning
 init:
