@@ -50,6 +50,8 @@ cache:
 install:
   - cmd: nuget restore .\MediaBrowser.sln
   - ps: >-
+      cd $(APPVEYOR_BUILD_FOLDER)
+
       cd .\Tools\Windows_Build_Script\
 
       . .\prepare_PortableLibraryTools2.ps1
@@ -86,8 +88,10 @@ after_build:
 # to run your custom scripts instead of automatic MSBuild
 build_script:
   - ps: >-
-      cd .\Tools\Windows_Build_Script\
+      cd $(APPVEYOR_BUILD_FOLDER)
       
+      cd .\Tools\Windows_Build_Script\
+
       . .\server.build.ps1
 
 # to disable automatic builds
