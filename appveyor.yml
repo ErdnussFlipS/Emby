@@ -18,7 +18,7 @@ branches:
 
 # environment variables
 environment:
-  REPO_PATH: $(APPVEYOR_BUILD_FOLDER)\emby
+  REPO_PATH: $(APPVEYOR_BUILD_FOLDER)
   ARTIFACT_NAME: MediaBrowser-Build-$(APPVEYOR_BUILD_VERSION)
 
 # Do not build on tags (GitHub only)
@@ -50,7 +50,7 @@ cache:
 # scripts that run after cloning repository
 # use - ps for powershell, - cmd for commandline
 install:
-  - cmd: nuget restore .\emby\MediaBrowser.sln
+  - cmd: nuget restore .\MediaBrowser.sln
   - ps: >-
       cd ${Env:REPO_PATH}
 
