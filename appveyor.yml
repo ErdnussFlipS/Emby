@@ -158,7 +158,7 @@ deploy_script:
 
 # on build failure
 on_failure:
-  - 7z a Deploy.zip $(APPVEYOR_BUILD_FOLDER)\Deploy\
+  - ps: 7z a Deploy.zip ${Env:APPVEYOR_BUILD_FOLDER}\..\Deploy\
   - appveyor PushArtifact Deploy.zip
   - appveyor PushArtifact $(APPVEYOR_BUILD_FOLDER)\Tools\Windows_Build_Script\MediaBrowser.sln.msbuild.log
 
