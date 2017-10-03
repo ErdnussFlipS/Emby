@@ -15,6 +15,7 @@ branches:
   # whitelist
   only:
     - appveyor
+    - free
 
 # environment variables
 environment:
