@@ -105,6 +105,8 @@ build_script:
 #---------------------------------#
 
 artifacts:
+  - path: $(APPVEYOR_BUILD_FOLDER)\..\Deploy\
+    name: Deploy.zip
   - path: $(APPVEYOR_BUILD_FOLDER)\Tools\Windows_Build_Script\MediaBrowser.sln.msbuild.log
     name: MediaBrowser.sln.msbuild.log
 
@@ -155,8 +157,10 @@ deploy_script:
 #   - do something
 
 # on build failure
-# on_failure:
-#   - do something
+on_failure:
+  - 7z a Deploy.zip $(APPVEYOR_BUILD_FOLDER)\Deploy\
+  - appveyor PushArtifact Deploy.zip
+  - appveyor PushArtifact $(APPVEYOR_BUILD_FOLDER)\Tools\Windows_Build_Script\MediaBrowser.sln.msbuild.log
 
 # after build failure or success
 # on_finish:
